@@ -1,0 +1,5 @@
+com\bcefit\infrastructure\IUserLoginDataRepository.class
+com\bcefit\domaine\HashAlgo.class
+com\bcefit\application\UserLoginDataServiceImpl.class
+com\bcefit\domaine\UserLoginData.class
+com\bcefit\application\IUserLoginDataService.class
