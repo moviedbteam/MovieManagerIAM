@@ -1,13 +1,16 @@
 package com.bcefit.domaine;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class UserLoginData {
 
     @Id
-    private int idUser;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idUser;
 
     private String loginName;
     private String passwordHash;
@@ -18,11 +21,11 @@ public class UserLoginData {
     public UserLoginData() {
     }
 
-    public int getIdUser() {
+    public Long getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(Long idUser) {
         this.idUser = idUser;
     }
 
