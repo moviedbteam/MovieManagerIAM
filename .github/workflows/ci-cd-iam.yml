@@ -88,6 +88,7 @@ jobs:
       packages: write
 
     steps:
+      - uses: actions/checkout@v3
       - name: Recuperation de l'artefact
         uses: actions/download-artifact@v3
         with:
