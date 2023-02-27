@@ -14,7 +14,7 @@ public class UserLoginData {
 
     private String loginName;
     private String passwordHash;
-    private String passwordSalt;
+
     private int hashAlgoId;
     private String email;
 
@@ -45,13 +45,6 @@ public class UserLoginData {
         this.passwordHash = passwordHash;
     }
 
-    public String getPasswordSalt() {
-        return passwordSalt;
-    }
-
-    public void setPasswordSalt(String passwordSalt) {
-        this.passwordSalt = passwordSalt;
-    }
 
     public int getHashAlgoId() {
         return hashAlgoId;
