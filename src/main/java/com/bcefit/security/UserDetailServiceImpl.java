@@ -27,11 +27,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
         List<GrantedAuthority> auth=new ArrayList<>();
 
-//        client.getRoles().forEach(role->{
-//            GrantedAuthority ga=new SimpleGrantedAuthority(role.getName());
-//            auth.add(ga);
-//        });
-
         return new User(userLoginData.getEmail(), userLoginData.getPasswordHash(), auth);
     }
 }

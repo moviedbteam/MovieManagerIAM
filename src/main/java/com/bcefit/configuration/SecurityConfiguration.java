@@ -27,6 +27,7 @@ public class SecurityConfiguration {
     @Autowired
     UserDetailsService userDetailsService;
 
+
     @Bean
     GrantedAuthorityDefaults grantedAuthorityDefaults() {
         return new GrantedAuthorityDefaults(""); // Remove the ROLE_ prefix
@@ -39,7 +40,6 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        System.out.println("=============== FILTER CHAIN ===============");
 
         http.cors();
 
@@ -59,7 +59,7 @@ public class SecurityConfiguration {
     {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.applyPermitDefaultValues();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "https://develop--moviemgr.netlify.app", "https://moviemgr.netlify.app"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "DELETE", "PUT", "PATCH"));
         configuration.setAllowedHeaders(Arrays.asList("X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization"));
         configuration.setAllowCredentials(true);
@@ -76,4 +76,5 @@ public class SecurityConfiguration {
         auth.userDetailsService(userDetailsService)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
+
 }
