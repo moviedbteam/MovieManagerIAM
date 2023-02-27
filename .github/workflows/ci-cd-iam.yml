@@ -103,6 +103,5 @@ jobs:
             image: movie-manager-iam
             tags: latest
             registry: ghcr.io
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+            username: ${{ github.actor }}
+            password: ${{ secrets.GITHUB_TOKEN }}
