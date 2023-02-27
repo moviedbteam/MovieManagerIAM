@@ -70,6 +70,7 @@ jobs:
         with:
             name: movie-manager-iam
             path: artifact
+            retention-days: 1
 
 
 #      - name: Publish package
