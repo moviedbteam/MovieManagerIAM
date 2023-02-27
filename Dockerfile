@@ -5,5 +5,5 @@
 FROM openjdk:17.0.1-jdk-oraclelinux8
 
 MAINTAINER jchaysinh
-COPY /home/runner/.m2/repository/com/bcefit/movie-manager-iam/1.0-SNAPSHOT/movie-manager-iam-1.0-SNAPSHOT.jar docker-ARM-Movie-App-IAM-0.0.1-SNAPSHOT.jar
+COPY *.jar docker-ARM-Movie-App-IAM-0.0.1-SNAPSHOT.jar
 ENTRYPOINT ["java","-jar","/docker-ARM-Movie-App-IAM-0.0.1-SNAPSHOT.jar"]

@@ -63,39 +63,35 @@ jobs:
           echo "${{ secrets.ENV_FILE_IAM }}" > ./src/main/resources/env.properties
 
       - name: Build Maven
-        run: mvn clean install
+        run: mvn clean package
 
-      - name: Publish package
-        run: mvn deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: mkdir artifact && cp target/*.jar artifact
+      - uses: actions/upload-artifact@v3
+        with:
+            name: movie-manager-iam
+            path: artifact
+
+
+#      - name: Publish package
+#        run: mvn deploy
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   ########################
   ## BUILD IMAGE DOCKER ##
   ########################
   build_docker_image:
     needs: build_jar
-#    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-#      - name: Log in to the Container registry
-#        uses: docker/login-action@v2
-#        with:
-#          registry: ${{ env.REGISTRY }}
-#          username: ${{ github.actor }}
-#          password: ${{ secrets.GITHUB_TOKEN }}
-#
-#      - name: Extract metadata (tags, labels) for Docker
-#        id: meta
-#        uses: docker/metadata-action@v4
-#        with:
-#          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      - name: Recuperation de l'artefact
+        uses: actions/download-artifact@v3
+        with:
+          name: movie-manager-iam
 
       - name: Build and push Docker image
         uses: mr-smithers-excellent/docker-build-push@v5
