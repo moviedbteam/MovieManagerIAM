@@ -33,7 +33,7 @@
         <repository>
             <id>github</id>
             <name>moviedbteam</name>
-            <url>https://maven.pkg.github.com/moviedbteam/iam-test</url>
+            <url>https://maven.pkg.github.com/moviemanageriam/</url>
         </repository>
     </distributionManagement>
 
