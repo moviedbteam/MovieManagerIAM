@@ -120,7 +120,6 @@ jobs:
           key: ${{ secrets.SSH_BACKEND_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            sudo su
             docker pull ghcr.io/moviedbteam/movie-manager-iam:latest
             docker stop iam
             docker run --rm -d -ti --name iam -p 8081:8081 ghcr.io/moviedbteam/movie-manager-iam:latest
