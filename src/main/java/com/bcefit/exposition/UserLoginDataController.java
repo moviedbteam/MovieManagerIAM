@@ -16,7 +16,8 @@ public class UserLoginDataController {
 
     @GetMapping("health")
     public ResponseEntity<String> health_check(){
-        return new ResponseEntity<>("IAM HEALTH CHECK: OK", HttpStatus.OK);
+
+        return new ResponseEntity<>("IAM - HEALTH CHECK: OK", HttpStatus.OK);
     }
 
     @PostMapping("createuser")
