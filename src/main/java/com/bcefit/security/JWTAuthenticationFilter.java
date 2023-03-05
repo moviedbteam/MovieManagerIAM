@@ -7,7 +7,6 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,6 +23,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import static org.springframework.util.CollectionUtils.toArray;
 
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -58,9 +59,11 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         User springUser = (User) authResult.getPrincipal();
 
         List<String> roles = new ArrayList<>();
+        roles.add("USER");
 
         String monToken = JWT.create().
                 withSubject(springUser.getUsername()).
+                withArrayClaim("claims",roles.toArray(new String[roles.size()])).
                 withExpiresAt(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME)).
                 sign(Algorithm.HMAC256(SecurityConstants.SECRET));
 
