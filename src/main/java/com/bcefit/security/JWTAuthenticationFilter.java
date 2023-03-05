@@ -58,6 +58,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         User springUser = (User) authResult.getPrincipal();
 
+        // Gestion des rôles
         List<String> roles = new ArrayList<>();
         roles.add("USER");
 
