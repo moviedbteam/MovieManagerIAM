@@ -1,6 +1,9 @@
 # Environnement File
 env.properties
 
+# IDE
+.idea/*
+
 # Compiled class file
 *.class
 
